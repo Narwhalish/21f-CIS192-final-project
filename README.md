@@ -4,7 +4,7 @@
 
 ## Description
 
-Lorem ipsum.
+This final project will process Piazza questions made by students...
 
 ## Installation
 
