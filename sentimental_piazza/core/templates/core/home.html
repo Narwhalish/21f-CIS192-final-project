@@ -1,5 +1,38 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<h1>Hello World!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Welcome to Sentimental Piazza!</h1>
+      <p>
+        This is a simple web application that allows you to post and read posts.
+      </p>
+      <p>
+        You can post a new post by clicking the "New Post" button in the top right corner.
+      </p>
+      <p>
+        You can read posts by clicking the "Read Posts" button in the top right corner.
+      </p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <form method="POST" action="/class_selection/">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" required name="user_email">
+      </div>
+
+      <div class="mb-3" style="margin-bottom: 10px">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword" required name="user_password">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
 {% endblock %}
