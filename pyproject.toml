@@ -8,6 +8,10 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.8"
 Django = "^4.0"
 piazza-api = "^0.12.0"
+matplotlib = "^3.5.1"
+wordcloud = "^1.8.1"
+nltk = "^3.6.5"
+html2text = "^2020.1.16"
 
 [tool.poetry.dev-dependencies]
 
