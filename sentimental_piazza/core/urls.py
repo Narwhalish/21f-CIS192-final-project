@@ -4,4 +4,5 @@ from core.views import *
 urlpatterns = [
     path("", home, name="home"),
     path("class_selection/", class_selection, name="class_selection"),
+    path("wc", wc, name="wc"),
 ]

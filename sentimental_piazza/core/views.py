@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import util
 
 
 def home(request):
@@ -6,10 +7,14 @@ def home(request):
 
 
 def class_selection(request):
-    context = {}
+    # context = {}
 
-    if request.method == "POST":
-        context["user_email"] = request.POST.get("user_email")
-        context["user_password"] = request.POST.get("user_password")
+    # if request.method == "POST":
+    #     context["user_email"] = request.POST.get("user_email")
+    #     context["user_password"] = request.POST.get("user_password")
 
-    return render(request, "core/class_selection.html", context)
+    return render(request, "core/class_selection.html")
+
+
+def wc(request):
+    return render(request, "core/wc.html")
