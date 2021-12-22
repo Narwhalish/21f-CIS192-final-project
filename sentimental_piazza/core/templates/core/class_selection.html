@@ -9,12 +9,14 @@
   </div>
 
   <div class="row">
-    <form method="GET" action="/wc">
+    <form method="POST" action="/wc">
+      {% csrf_token %}
+
       <div class="form-group row">
         <div class="col-xs-2">
           <div class="mb-3">
             <label for="class-id" class="form-label">Class ID</label>
-            <input type="text" class="form-control" id="class-id" required name="class-id">
+            <input type="text" class="form-control" id="class-id" required name="class_id">
           </div>
         </div>
       </div>
