@@ -1,6 +1,10 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import nltk
+from numpy import mat
 from wordcloud import WordCloud
+
+matplotlib.use("Agg")
 
 from string import punctuation
 from nltk.corpus import stopwords
@@ -40,31 +44,32 @@ def get_words(file_path) -> list:
     content_list = content.split()
     for i in range(len(content_list)):
         content_list[i] = content_list[i].lower()
-    f.close()
     return content_list
 
 
-def createWordCloud(words, numWords):
+def createWordCloud(words, numWords, filepath):
     filtered_words = nltkfilter(words)
-    plt.figure()
-    wc = WordCloud(max_font_size=45, max_words=numWords, background_color="white")
-    wordcloud_jan = wc.generate_from_text(" ".join(filtered_words))
-    plt.imshow(wordcloud_jan, interpolation="bilinear")
-    plt.axis("off")
-
-    plt.savefig("../static/wordcloud.png")
+    wc = WordCloud(
+        max_font_size=45, max_words=numWords, background_color="white", scale=2.0
+    )
+    wordcloud = wc.generate_from_text(" ".join(filtered_words))
+    wordcloud.to_file(filepath)
 
 
-def plotFrequency(words, numWords, myTitle):
+def plotFrequency(words, numWords, myTitle, filepath):
+    plt.ioff()
+    fig = plt.figure()
+
+    plt.gcf().subplots_adjust(bottom=0.15)
     filtered_words = nltkfilter(words)
-    plt.figure()
     freq_dist = nltk.FreqDist(filtered_words)
-    freq_dist.plot(numWords, cumulative=False, title=myTitle)
 
-    plt.savefig("../static/freq.png")
+    freq_dist.plot(numWords, cumulative=False)
+    plt.title(myTitle)
+    fig.savefig(filepath, bbox_inches="tight")
 
 
-def customPlotFreq(data, months=[9, 12]):
+def customPlotFreq(data, months, filepath):
     dicMonths = {
         1: "January",
         2: "February",
@@ -84,8 +89,8 @@ def customPlotFreq(data, months=[9, 12]):
         s += dicMonths[month] + ", "
     s = s[:-2]
 
-    plotFrequency(retrieveMonths(dataDictionary(data), months), 50, s)
+    plotFrequency(retrieveMonths(dataDictionary(data), months), 50, s, filepath)
 
 
-def customWordCloud(data, months=[9, 12]):
-    createWordCloud(retrieveMonths(dataDictionary(data), months), 100)
+def customWordCloud(data, months, numWords, filepath):
+    createWordCloud(retrieveMonths(dataDictionary(data), months), numWords, filepath)

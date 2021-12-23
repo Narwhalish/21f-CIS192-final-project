@@ -3,20 +3,26 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
       <h1>Your Word Cloud!</h1>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-6">
+    <div class="col-xs-6">
       <h2>Word Frequency</h2>
-      <img src="{% static freq %}">
+      <img src="../static/core/plotfreq.png" class="img-fluid" style="max-width: 100%; height: auto">
     </div>
-    <div class="col-6">
+    <div class="col-xs-6">
       <h2>Word Cloud</h2>
-      <img src="{% static wordcloud %}">
+      <img src="../static/core/wordcloud.png" class="img-fluid" style="max-width: 100%; height: auto">
     </div>
   </div>
+
+  <form method="GET" action="/">
+    <button type="submit" class="btn btn-primary">Back to Home</button>
+  </form>
 </div>
+
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from util import api_caller, wordcloud
+from util import api_caller, grapher
 
 
 def home(request):
@@ -30,10 +30,16 @@ def wc(request):
             request.session.get("password"),
             request.session.get("class_id"),
         )
-        context["data"] = data
 
-        wordcloud.customPlotFreq(data)
-        wordcloud.customWordCloud(data)
+        grapher.customPlotFreq(
+            data, [9, 12], "sentimental_piazza/core/static/core/plotfreq.png"
+        )
+
+        grapher.createWordCloud(
+            grapher.retrieveMonths(grapher.dataDictionary(data), [12, 11, 10, 9]),
+            100,
+            "sentimental_piazza/core/static/core/wordcloud.png",
+        )
 
         return render(request, "core/wc.html", context)
 
