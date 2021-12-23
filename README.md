@@ -13,7 +13,7 @@ The assignment was divided among three team members according to the three stage
 ## Submission Requirements
 
 1. Class Definition: 
-2. Two First Party Packages: JSON, 
+2. Two First Party Packages: JSON, Time
 3. Two Third Party Packages: Django, NLTK, WordCloud, Matplotlib
 
 ## Installation
