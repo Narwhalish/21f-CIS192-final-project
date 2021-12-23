@@ -18,6 +18,6 @@ The assignment was divided among three team members according to the three stage
 
 ## Installation
 
-Libraries such as WordCloud, NLTK are needed. 
+Libraries WordCloud, NLTK are needed. 
 
 
